@@ -1,0 +1,77 @@
+<?php
+
+vc_map(array(
+    "name" => "Services  Discount",
+    "base" => "cleaning_services_discount",
+    //"icon" => CLEANING_SERVICES_THEME_URI . '/images/cleaning.png',
+    "category" => esc_html__('Cleaning Services', 'cleaning_services'),
+    "as_parent" => array('only' => 'cleaning_services_discount_items'),
+    "content_element" => true,
+    "show_settings_on_create" => true,
+    "js_view" => 'VcColumnView',
+    "params" => array(
+        array(
+            "type" => "textfield",
+            "holder" => "div",
+            "heading" => "Add Extra Class",
+            "param_name" => "extra_class",
+        ),
+    )
+));
+
+vc_map(array(
+    "name" => "Service Discount Items",
+    "base" => "cleaning_services_discount_items",
+    //"icon" => CLEANING_SERVICES_THEME_URI . '/images/cleaning.png',
+    "category" => esc_html__('Cleaning Services', 'cleaning_services'),
+    "as_child" => array('only' => 'cleaning_services_discount'),
+    "content_element" => true,
+    "show_settings_on_create" => true,
+    "params" => array(
+        array(
+            "type" => "dropdown",
+            "holder" => "div",
+            "admin_label" => true,
+            "heading" => "Column no",
+            "param_name" => "color",
+            "value" => array(
+                "Color One" => "1",
+                "Color Two" => "2",
+                "Color Three" => "3",
+            ),
+            "std" => '',
+            "description" => esc_html__('No of color.', 'cleaning_services'),
+        ),
+        array(
+            "type" => "textarea_html",
+            "holder" => "div",
+            "heading" => "Discount Type",
+            "param_name" => "content",
+            "holder" => "div",
+            "admin_label" => true,
+        ),
+        array(
+            "type" => "textfield",
+            "holder" => "div",
+            "heading" => "Discount Type",
+            "param_name" => "discount_type",
+            "holder" => "div",
+            "admin_label" => true,
+        ),
+    )
+));
+
+if (class_exists('WPBakeryShortCodesContainer')) {
+
+    class WPBakeryShortCode_Cleaning_Services_Discount extends WPBakeryShortCodesContainer {
+        
+    }
+
+}
+if (class_exists('WPBakeryShortCode')) {
+
+    class WPBakeryShortCode_Cleaning_Services_Discount_Items extends WPBakeryShortCode {
+        
+    }
+
+}
